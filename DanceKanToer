@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    font-family: Arial, sans-serif;
+    color: rgb(255, 0, 0);
+    text-align: center;
+    animation: colorChange 5s infinite;
+}
+
+@keyframes colorChange {
+    0% { color: rgb(255, 0, 0); }
+    25% { color: rgb(0, 255, 0); }
+    50% { color: rgb(0, 0, 255); }
+    75% { color: rgb(255, 255, 0); }
+    100% { color: rgb(255, 0, 255); }
+}
+
+img {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    pointer-events: none;
+}
+
+
+const capybaraImage = document.getElementById('capybaraImage');
+const message = document.querySelector('.message');
+
+document.addEventListener('mousemove', (event) => {
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    capybaraImage.style.left = mouseX - capybaraImage.width / 2 + 'px';
+    capybaraImage.style.top = mouseY - capybaraImage.height / 2 + 'px';
+});
+
+let isMouseDown = false;
+document.addEventListener('mousedown', () => {
+    isMouseDown = true;
+    capybaraImage.src = "dancing-capybara.gif";
+});
+
+document.addEventListener('mouseup', () => {
+    if (isMouseDown) {
+        capybaraImage.src = "Capi.gif";
+        isMouseDown = false;
+    }
+});
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>กดค้าง! เพื่อดูคาปิบาร่าแดนซ์กระจาย!!!</title>
+    <link rel="stylesheet" href="style.css"> <!-- G:\Code Testing\Style.css -->
+</head>
+<body>
+    <div class="message">
+        <h1>กดค้าง! เพื่อดูคาปิบาร่าแดนซ์กระจาย!!!</h1>
+    </div>
+    <img id="capybaraImage" src="G:\Code Testing\122.gif" alt="คาปิบารา">
+    <script src="script.js"></script> <!-- G:\Code Testing\script.js -->
+</body>
+</html>
+
